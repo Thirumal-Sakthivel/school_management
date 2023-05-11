@@ -25,7 +25,7 @@ default: &default
 
 development:
   <<: *default
-  database: school_management_development
+  database: scl_management_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: school_management_test
+  database: scl_management_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: school_management_production
+  database: scl_management_production
   username: school_management
   password: <%= ENV['SCHOOL_MANAGEMENT_DATABASE_PASSWORD'] %>
