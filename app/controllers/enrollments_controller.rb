@@ -4,7 +4,6 @@ class EnrollmentsController < ApplicationController
 
   # GET /enrollments or /enrollments.json
   def index
-    @enrollments = Enrollment.all
     @enrollments = if current_user.admin?
       Enrollment.includes(:course, :batch, :school, :student).all
     elsif current_user.school_admin?

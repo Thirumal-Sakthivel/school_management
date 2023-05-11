@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2023_05_11_105520) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "course_type"
+    t.integer "course_type", default: 0
     t.decimal "fee"
     t.text "description"
     t.bigint "category_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2023_05_11_105520) do
     t.bigint "course_id"
     t.bigint "batch_id"
     t.integer "student_id"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["batch_id"], name: "index_enrollments_on_batch_id"

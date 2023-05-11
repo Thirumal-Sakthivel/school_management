@@ -16,7 +16,7 @@ import { Tooltip, Popover } from "bootstrap"
 
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss")
-
+const images = require.context('../images', true)
 
 Rails.start()
 Turbolinks.start()

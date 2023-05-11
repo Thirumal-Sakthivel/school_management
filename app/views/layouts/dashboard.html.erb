@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SchoolManagement</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <%= render 'layouts/nav_bar' %>
+    </header>
+    <%= yield %>
+    <footer id="footer">
+      <div class="container py-4 text-center">
+        <div class="copyright">
+          © Copyright <strong><span>School Management</span></strong>. All Rights Reserved
+        </div>
+      </div>
+    </footer>
+
+    <%= render 'layouts/toastr_flash' %>
+  </body>
+</html>

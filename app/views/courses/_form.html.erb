@@ -11,62 +11,63 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :course_type %>
-    <%= form.number_field :course_type %>
+  <div class="mb-3">
+    <%= form.label :course_type, class: "form-label" %>
+    <%= form.select :course_type, Course.course_types.to_a.collect{ |a| [a[0].titleize, a[0]]}, {} , { class: "form-control" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :fee %>
-    <%= form.text_field :fee %>
+  <div class="mb-3">
+    <%= form.label :fee, class: "form-label" %>
+    <%= form.text_field :fee, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.number_field :category_id %>
+  <div class="mb-3">
+    <%= form.label :category_id, class: "form-label" %>
+    <%= form.select :category_id, Category.all.pluck(:name, :id), {} , { class: "form-control" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :school_id %>
-    <%= form.number_field :school_id %>
+  <div class="mb-3">
+    <%= form.label :school_id, class: "form-label" %>
+    <%= form.select :school_id, School.all.pluck(:name, :id), {} , { class: "form-control" } %>
   </div>
 
-  <div class="field">
-    <%= form.label :learn_content %>
-    <%= form.text_area :learn_content %>
+  <div class="mb-3">
+    <%= form.label :learn_content, class: "form-label" %>
+    <%= form.text_area :learn_content, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :curriculam %>
-    <%= form.text_area :curriculam %>
+  <div class="mb-3">
+    <%= form.label :curriculam, class: "form-label" %>
+    <%= form.text_area :curriculam, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :duration %>
-    <%= form.text_field :duration %>
+  <div class="mb-3">
+    <%= form.label :duration, class: "form-label" %>
+    <%= form.text_field :duration, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :hours_per_day %>
-    <%= form.text_field :hours_per_day %>
+  <div class="mb-3">
+    <%= form.label :hours_per_day, class: "form-label" %>
+    <%= form.text_field :hours_per_day, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :active %>
+  <div class="mb-3">
+    <%= form.label :active, class: "form-label" %>
     <%= form.check_box :active %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions text-center">
+    <%= link_to 'Back', courses_path, class: "btn btn-secondary" %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

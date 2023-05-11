@@ -1,59 +1,58 @@
-<p id="notice"><%= notice %></p>
+<h4>Course</h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Name:</th>
+            <td><%= @course.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Course type:</th>
+            <td><%= @course.course_type %></td>
+          </tr>
+          <tr>
+            <th scope="row">Fee:</th>
+            <td><%= @course.fee %></td>
+          </tr>
+          <tr>
+            <th scope="row">Description:</th>
+            <td><%= @course.description %></td>
+          </tr>
+          <tr>
+            <th scope="row">Category:</th>
+            <td><%= @course&.category.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">School:</th>
+            <td><%= @course&.school.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Learn content:</th>
+            <td><%= @course.learn_content %></td>
+          </tr>
+          <tr>
+            <th scope="row">Curriculam:</th>
+            <td><%= @course.curriculam %></td>
+          </tr>
+          <tr>
+            <th scope="row">Duration:</th>
+            <td><%= @course.duration %></td>
+          </tr>
+          <tr>
+            <th scope="row">Hours per day:</th>
+            <td><%= @course.hours_per_day %></td>
+          </tr>
+          <tr>
+            <th scope="row">Active:</th>
+            <td><%= @course.active %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Course type:</strong>
-  <%= @course.course_type %>
-</p>
-
-<p>
-  <strong>Fee:</strong>
-  <%= @course.fee %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @course.category_id %>
-</p>
-
-<p>
-  <strong>School:</strong>
-  <%= @course.school_id %>
-</p>
-
-<p>
-  <strong>Learn content:</strong>
-  <%= @course.learn_content %>
-</p>
-
-<p>
-  <strong>Curriculam:</strong>
-  <%= @course.curriculam %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @course.duration %>
-</p>
-
-<p>
-  <strong>Hours per day:</strong>
-  <%= @course.hours_per_day %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @course.active %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', courses_path, class: "mt-5 btn btn-secondary" %>
