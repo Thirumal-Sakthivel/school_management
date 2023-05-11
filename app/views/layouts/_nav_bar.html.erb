@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">School Management</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <% if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <% if can?(:read, School) %>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/schools">Schools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">School Admins</a>
+            </li>
+          <% end %>
+          <% if can?(:read, Course) %>
+            <li class="nav-item">
+              <a class="nav-link" href="/courses">Courses</a>
+            </li>
+          <% end %>
+          <% if can?(:read, Batch) %>
+            <li class="nav-item">
+              <a class="nav-link" href="/batches">Batches</a>
+            </li>
+          <% end %>
+          <% if can?(:read, Enrollment) %>
+            <li class="nav-item">
+              <a class="nav-link" href="/enrollments">Enrollment</a>
+            </li>
+          <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.full_name %>
+            </a>
+            <ul class="dropdown-menu">
+              <% if can?(:read, User) %>
+                <li><a class="dropdown-item" href="#">User Profile</a></li>
+              <% end %>
+              <li><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <%= link_to "Login Here", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Student Signup", '/', class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</nav>

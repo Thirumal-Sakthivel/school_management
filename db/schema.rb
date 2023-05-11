@@ -97,12 +97,12 @@ ActiveRecord::Schema.define(version: 2023_05_11_094007) do
   end
 
   create_table "user_roles", force: :cascade do |t|
-    t.bigint "user_id_id"
-    t.bigint "role_id_id"
+    t.bigint "user_id"
+    t.bigint "role_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["role_id_id"], name: "index_user_roles_on_role_id_id"
-    t.index ["user_id_id"], name: "index_user_roles_on_user_id_id"
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
