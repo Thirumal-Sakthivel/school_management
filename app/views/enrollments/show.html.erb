@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<h4>Enrollment</h4>
 
-<p>
-  <strong>Enrollment date:</strong>
-  <%= @enrollment.enrollment_date %>
-</p>
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Enrollment date:</th>
+            <td><%= format_date_time @enrollment.enrollment_date %></td>
+          </tr>
+          <tr>
+            <th scope="row">School:</th>
+            <td><%= @enrollment&.school.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Course:</th>
+            <td><%= @enrollment&.course.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Batch:</th>
+            <td><%= @enrollment&.batch.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Student:</th>
+            <td><%= @enrollment&.student.full_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Status:</th>
+            <td><%= @enrollment.status.titleize %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>School:</strong>
-  <%= @enrollment.school_id %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @enrollment.course_id %>
-</p>
-
-<p>
-  <strong>Batch:</strong>
-  <%= @enrollment.batch_id %>
-</p>
-
-<p>
-  <strong>Student:</strong>
-  <%= @enrollment.student_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @enrollment.status %>
-</p>
-
-<%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
-<%= link_to 'Back', enrollments_path %>
+<%= link_to 'Back', enrollments_path, class: "mt-5 btn btn-secondary" %>

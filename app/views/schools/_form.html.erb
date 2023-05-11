@@ -11,77 +11,68 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
+  <div class="mb-3">
+    <%= form.label :phone_number, class: "form-label" %>
+    <%= form.text_field :phone_number, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :office_phone %>
-    <%= form.text_field :office_phone %>
+  <div class="mb-3">
+    <%= form.label :office_phone, class: "form-label" %>
+    <%= form.text_field :office_phone, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :website %>
-    <%= form.text_field :website %>
+  <div class="mb-3">
+    <%= form.label :website, class: "form-label" %>
+    <%= form.text_field :website, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address %>
+  <div class="mb-3">
+    <%= form.label :street_address, class: "form-label" %>
+    <%= form.text_field :street_address, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <div class="mb-3">
+    <%= form.label :city, class: "form-label" %>
+    <%= form.text_field :city, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
+  <div class="mb-3">
+    <%= form.label :state, class: "form-label" %>
+    <%= form.text_field :state, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
+  <div class="mb-3">
+    <%= form.label :country, class: "form-label" %>
+    <%= form.text_field :country, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :pin_code %>
-    <%= form.text_field :pin_code %>
+  <div class="mb-3">
+    <%= form.label :pin_code, class: "form-label" %>
+    <%= form.text_field :pin_code, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :delivery_method %>
-    <%= form.text_field :delivery_method %>
+  <div class="mb-3">
+    <%= form.label :facilities, class: "form-label" %>
+    <%= form.text_field :facilities, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :facilities %>
-    <%= form.text_field :facilities %>
-  </div>
-
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions text-center">
+    <%= link_to 'Back', schools_path, class: "btn btn-secondary" %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

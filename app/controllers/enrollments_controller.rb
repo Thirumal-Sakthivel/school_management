@@ -5,6 +5,13 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments or /enrollments.json
   def index
     @enrollments = Enrollment.all
+    @enrollments = if current_user.admin?
+      Enrollment.includes(:course, :batch, :school, :student).all
+    elsif current_user.school_admin?
+      Enrollment.includes(:course, :batch, :school, :student).my_school_entries(current_user&.school&.id)
+    else
+      Enrollment.includes(:course, :batch, :school, :student).mine(current_user.id)
+    end
   end
 
   # GET /enrollments/1 or /enrollments/1.json
@@ -23,6 +30,7 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments or /enrollments.json
   def create
     @enrollment = Enrollment.new(enrollment_params)
+    @enrollment.status = current_user.student? ? 'pending' : 'approved'
 
     respond_to do |format|
       if @enrollment.save
@@ -37,6 +45,8 @@ class EnrollmentsController < ApplicationController
 
   # PATCH/PUT /enrollments/1 or /enrollments/1.json
   def update
+    @enrollment.status = current_user.student? ? 'pending' : 'approved'
+
     respond_to do |format|
       if @enrollment.update(enrollment_params)
         format.html { redirect_to enrollment_url(@enrollment), notice: "Enrollment was successfully updated." }

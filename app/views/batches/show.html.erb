@@ -1,39 +1,42 @@
-<p id="notice"><%= notice %></p>
+<h4>Batch</h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @batch.name %>
-</p>
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Name:</th>
+            <td><%= @batch.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Description:</th>
+            <td><%= @batch.description %></td>
+          </tr>
+          <tr>
+            <th scope="row">School:</th>
+            <td><%= @batch&.school.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Course:</th>
+            <td><%= @batch&.course.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Start time:</th>
+            <td><%= format_date_time @batch.start_time %></td>
+          </tr>
+          <tr>
+            <th scope="row">End time:</th>
+            <td><%= format_date_time @batch.end_time %></td>
+          </tr>
+          <tr>
+            <th scope="row">Active:</th>
+            <td><%= @batch.active %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @batch.description %>
-</p>
-
-<p>
-  <strong>School:</strong>
-  <%= @batch.school_id %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <%= @batch.course_id %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @batch.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @batch.end_time %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @batch.active %>
-</p>
-
-<%= link_to 'Edit', edit_batch_path(@batch) %> |
-<%= link_to 'Back', batches_path %>
+<%= link_to 'Back', batches_path, class: "mt-5 btn btn-secondary" %>

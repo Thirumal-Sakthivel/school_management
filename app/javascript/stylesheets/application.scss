@@ -1,2 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 @import "toastr";
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+.bg-navbar {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  padding: 0.75rem 0;
+  background-color: #00796B;
+}

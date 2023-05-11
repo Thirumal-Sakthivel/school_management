@@ -1,39 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Batches</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>School</th>
-      <th>Course</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Active</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @batches.each do |batch| %>
-      <tr>
-        <td><%= batch.name %></td>
-        <td><%= batch.description %></td>
-        <td><%= batch.school_id %></td>
-        <td><%= batch.course_id %></td>
-        <td><%= batch.start_time %></td>
-        <td><%= batch.end_time %></td>
-        <td><%= batch.active %></td>
-        <td><%= link_to 'Show', batch %></td>
-        <td><%= link_to 'Edit', edit_batch_path(batch) %></td>
-        <td><%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <h4 class="mb-3">Batches
+    <% if can? :create, Batch %>
+      <%= link_to 'New Batch', new_batch_path, class: 'btn btn-outline-success fs-6 float-end' %>
     <% end %>
-  </tbody>
-</table>
+  </h4>
+  <div class="card">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>School</th>
+          <th>Course</th>
+          <th>Start time</th>
+          <th>End time</th>
+          <th>Active</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
 
-<br>
-
-<%= link_to 'New Batch', new_batch_path %>
+      <tbody>
+        <% @batches.each do |batch| %>
+          <tr>
+            <td><%= batch.name %></td>
+            <td><%= batch&.school.name %></td>
+            <td><%= batch&.course.name %></td>
+            <td><%= format_date_time batch.start_time %></td>
+            <td><%= format_date_time batch.end_time %></td>
+            <td><%= batch.active %></td>
+            <td>
+              <% if can? :read, Batch %>
+                <%= link_to 'Show', batch, class: 'btn btn-sm btn-outline-primary' %>
+              <% end %>
+              <% if can? :update, Batch %>
+                <%= link_to 'Edit', edit_batch_path(batch), class: 'btn btn-sm btn-outline-warning' %>
+              <% end %>
+              <% if can? :destroy, Batch %>
+                <%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

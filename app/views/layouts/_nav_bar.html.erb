@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">School Management</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,8 +8,8 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
           <% if can?(:read, School) %>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/schools">Schools</a>
+            <li class="nav-item <%= active?('schools') %>">
+              <%= link_to "Schools", schools_path, class: "nav-link #{active?('schools')}" %>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">School Admins</a>
@@ -17,17 +17,17 @@
           <% end %>
           <% if can?(:read, Course) %>
             <li class="nav-item">
-              <a class="nav-link" href="/courses">Courses</a>
+              <%= link_to "Courses", courses_path, class: "nav-link #{active?('courses')}" %>
             </li>
           <% end %>
           <% if can?(:read, Batch) %>
             <li class="nav-item">
-              <a class="nav-link" href="/batches">Batches</a>
+              <%= link_to "Batches", batches_path, class: "nav-link #{active?('batches')}" %>
             </li>
           <% end %>
           <% if can?(:read, Enrollment) %>
             <li class="nav-item">
-              <a class="nav-link" href="/enrollments">Enrollment</a>
+              <%= link_to "Enrollment", enrollments_path, class: "nav-link #{active?('enrollments')}" %>
             </li>
           <% end %>
           <li class="nav-item dropdown">

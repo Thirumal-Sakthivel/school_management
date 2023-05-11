@@ -1,74 +1,66 @@
-<p id="notice"><%= notice %></p>
+<h4>School</h4>
 
-<p>
-  <strong>Name:</strong>
-  <%= @school.name %>
-</p>
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Name:</th>
+            <td><%= @school.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Email:</th>
+            <td><%= @school.email %></td>
+          </tr>
+          <tr>
+            <th scope="row">Phone number:</th>
+            <td><%= @school.phone_number %></td>
+          </tr>
+          <tr>
+            <th scope="row">Office number:</th>
+            <td><%= @school.office_phone %></td>
+          </tr>
+          <tr>
+            <th scope="row">Website:</th>
+            <td><%= @school.website %></td>
+          </tr>
+          <tr>
+            <th scope="row">Description:</th>
+            <td><%= @school.description %></td>
+          </tr>
+          <tr>
+            <th scope="row">Street address:</th>
+            <td><%= @school.street_address %></td>
+          </tr>
+          <tr>
+            <th scope="row">City:</th>
+            <td><%= @school.city %></td>
+          </tr>
+          <tr>
+            <th scope="row">State:</th>
+            <td><%= @school.state %></td>
+          </tr>
+          <tr>
+            <th scope="row">Country:</th>
+            <td><%= @school.country %></td>
+          </tr>
+          <tr>
+            <th scope="row">Pin code:</th>
+            <td><%= @school.pin_code %></td>
+          </tr>
+          <tr>
+            <th scope="row">Facilities:</th>
+            <td><%= @school.facilities %></td>
+          </tr>
+          <tr>
+            <th scope="row">Active:</th>
+            <td><%= @school.active %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @school.email %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @school.phone_number %>
-</p>
-
-<p>
-  <strong>Office phone:</strong>
-  <%= @school.office_phone %>
-</p>
-
-<p>
-  <strong>Website:</strong>
-  <%= @school.website %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @school.description %>
-</p>
-
-<p>
-  <strong>Street address:</strong>
-  <%= @school.street_address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @school.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @school.state %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @school.country %>
-</p>
-
-<p>
-  <strong>Pin code:</strong>
-  <%= @school.pin_code %>
-</p>
-
-<p>
-  <strong>Delivery method:</strong>
-  <%= @school.delivery_method %>
-</p>
-
-<p>
-  <strong>Facilities:</strong>
-  <%= @school.facilities %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @school.active %>
-</p>
-
-<%= link_to 'Edit', edit_school_path(@school) %> |
-<%= link_to 'Back', schools_path %>
+<%= link_to 'Back', schools_path, class: "mt-5 btn btn-secondary" %>

@@ -7,6 +7,8 @@ class Ability
     user ||= User.new
 
     alias_action :create, :read, :update, :destroy, to: :crud
+    alias_action :create, :read, :update, to: :cru
+    alias_action :read, :update, to: :read_update
     user.roles.each { |role| send(role.name) }
   end
 
@@ -15,15 +17,15 @@ class Ability
   end
 
   def student
-    can :read, Enrollment
+    can :cru, Enrollment
     can :read, User
   end
 
   def school_admin
-    can :read, School
-    can :read, Course
-    can :read, Batch
-    can :read, Enrollment
+    can :read_update, School
+    can :crud, Course
+    can :cru, Batch
+    can :cru, Enrollment
     can :read, User
   end
 end

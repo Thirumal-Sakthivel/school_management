@@ -4,7 +4,11 @@ class BatchesController < ApplicationController
 
   # GET /batches or /batches.json
   def index
-    @batches = Batch.all
+    @batches = if current_user.admin?
+      Batch.includes(:course, :school).all
+    elsif current_user.school_admin?
+      Batch.includes(:course, :school).my_school_entries(current_user&.school&.id)
+    end
   end
 
   # GET /batches/1 or /batches/1.json
