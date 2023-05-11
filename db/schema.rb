@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_11_093058) do
+ActiveRecord::Schema.define(version: 2023_05_11_094007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "batches", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.bigint "school_id"
+    t.bigint "course_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_batches_on_course_id"
+    t.index ["school_id"], name: "index_batches_on_school_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -21,6 +35,38 @@ ActiveRecord::Schema.define(version: 2023_05_11_093058) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "course_type"
+    t.decimal "fee"
+    t.text "description"
+    t.bigint "category_id"
+    t.bigint "school_id"
+    t.text "learn_content"
+    t.text "curriculam"
+    t.string "duration"
+    t.string "hours_per_day"
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_courses_on_category_id"
+    t.index ["school_id"], name: "index_courses_on_school_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.datetime "enrollment_date", null: false
+    t.bigint "school_id"
+    t.bigint "course_id"
+    t.bigint "batch_id"
+    t.integer "student_id"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["batch_id"], name: "index_enrollments_on_batch_id"
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["school_id"], name: "index_enrollments_on_school_id"
   end
 
   create_table "roles", force: :cascade do |t|

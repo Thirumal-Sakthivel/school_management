@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :enrollments
+  resources :batches
+  resources :courses
   resources :categories
   resources :schools
   devise_for :users
