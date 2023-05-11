@@ -9,12 +9,14 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 require("@popperjs/core")
 import "bootstrap"
+global.toastr = require("toastr")
 
 // Import the specific modules you may need (Modal, Alert, etc)
 import { Tooltip, Popover } from "bootstrap"
 
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss")
+
 
 Rails.start()
 Turbolinks.start()

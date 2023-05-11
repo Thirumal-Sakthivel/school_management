@@ -1,9 +1,14 @@
 class SchoolsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_school, only: %i[ show edit update destroy ]
 
   # GET /schools or /schools.json
   def index
-    @schools = School.all
+    @schools = if current_user.admin?
+      School.all
+    else
+      School.mine(current_user.id)
+    end
   end
 
   # GET /schools/1 or /schools/1.json

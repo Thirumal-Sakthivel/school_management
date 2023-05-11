@@ -6,6 +6,11 @@ class User < ApplicationRecord
 
   has_many :user_roles
   has_many :roles, through: :user_roles
+  belongs_to :school
+
+  scope :admins, -> { includes(:roles).where(roles: { name: 'admin' }) }
+  scope :school_admins, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'school_admin' }) }
+  scope :students, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'student' }) }
 
   def full_name
     [first_name, last_name].select(&:present?).join(' ').titleize

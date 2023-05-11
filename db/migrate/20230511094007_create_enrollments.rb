@@ -6,7 +6,7 @@ class CreateEnrollments < ActiveRecord::Migration[6.1]
       t.references :course
       t.references :batch
       t.integer :student_id
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end
