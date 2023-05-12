@@ -67,3 +67,8 @@ gem 'devise'
 gem 'cancancan'
 
 gem 'active_model_serializers', '~> 0.10.0'
+
+# Use Json Web Token (JWT) for token based authentication
+gem 'jwt'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'

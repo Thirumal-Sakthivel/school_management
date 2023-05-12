@@ -1,5 +1,5 @@
 class Api::V1::SchoolsController < Api::V1::BaseController
-  skip_before_action :authenticate_user!
+  before_action :authorize_request
 
   # GET /api/v1/schools
   def index
