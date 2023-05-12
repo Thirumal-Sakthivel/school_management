@@ -15,9 +15,14 @@
               <%= link_to "Schools", schools_path, class: "nav-link #{active?('schools')}" %>
             </li>
           <% end %>
-          <% if can?(:create, User) %>
+          <% if can?(:create, :school_users) %>
             <li class="nav-item">
-              <a class="nav-link" href="/school_users/admins">School Admins</a>
+              <a class="nav-link" href="/school_users">School Admins</a>
+            </li>
+          <% end %>
+          <% if can?(:read, :school_users) %>
+            <li class="nav-item">
+              <a class="nav-link" href="/students">Students</a>
             </li>
           <% end %>
           <% if can?(:read, Course) %>
@@ -40,7 +45,7 @@
               <%= current_user.full_name %>
             </a>
             <ul class="dropdown-menu">
-              <% if can?(:read, User) %>
+              <% if can?(:read, :school_users) %>
                 <li><a class="dropdown-item" href="/school_users/profile">User Profile</a></li>
               <% end %>
               <li><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
@@ -55,7 +60,7 @@
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Student Signup", '/', class: "nav-link" %>
+            <%= link_to "Student Signup", '/students/new', class: "nav-link" %>
           </li>
         </ul>
       </div>

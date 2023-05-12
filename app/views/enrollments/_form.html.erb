@@ -40,6 +40,13 @@
     <%= form.select :batch_id, Batch.all.pluck(:name, :id), {} , { class: "form-control" } %>
   </div>
 
+  <% if current_user.school_admin? %>
+      <div class="mb-3">
+        <%= form.label :status, class: "form-label" %>
+        <%= form.select :status, Enrollment.statuses.to_a.collect{ |a| [a[0].titleize, a[0]]}, {} , { class: "form-control" } %>
+      </div>
+  <% end %>
+
   <div class="actions text-center">
     <%= link_to 'Back', enrollments_path, class: "btn btn-secondary" %>
     <%= form.submit class: "btn btn-primary" %>

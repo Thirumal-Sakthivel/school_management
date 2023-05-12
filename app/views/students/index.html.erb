@@ -1,0 +1,38 @@
+<div class="row">
+  <h4 class="mb-3">School Admin
+    <% if can? :create, User %>
+      <%= link_to 'New School Admin', new_school_user_path, class: 'btn btn-outline-success fs-6 float-end' %>
+    <% end %>
+  </h4>
+  <div class="card">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Country</th>
+          <th>Active</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.phone_number %></td>
+            <td><%= user.country %></td>
+            <td><%= user.active %></td>
+            <td>
+              <%= link_to 'Show', student_path(user), class: 'btn btn-sm btn-outline-primary' %>
+              <%= link_to 'Edit', edit_student_path(user), class: 'btn btn-sm btn-outline-warning' %>
+              <%= link_to 'Destroy', student_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

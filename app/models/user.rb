@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   scope :admins, -> { includes(:roles).where(roles: { name: 'admin' }) }
   scope :students, -> { includes(:roles).where(roles: { name: 'student' }) }
+  scope :all_shool_admins, -> { includes(:roles).where(roles: { name: 'school_admin' }) }
   scope :school_admins, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'school_admin' }) }
   scope :school_students, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'student' }) }
 

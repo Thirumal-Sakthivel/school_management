@@ -19,6 +19,7 @@ class Ability
   def student
     can :cru, Enrollment
     can :read, User
+    can :read, :school_users
   end
 
   def school_admin
@@ -27,5 +28,6 @@ class Ability
     can :cru, Batch
     can :cru, Enrollment
     can :read, User
+    can :read, :school_users
   end
 end

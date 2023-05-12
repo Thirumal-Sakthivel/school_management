@@ -1,16 +1,13 @@
-class SchoolUsersController < ApplicationController
-  authorize_resource :class => false, :except => [:profile]
+class StudentsController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, :only => [:new, :create]
 
   def new
     @user = User.new
   end
 
   def index
-    @users = User.all_shool_admins
-  end
-
-  def profile
+    @users = User.students
   end
 
   def edit
@@ -24,9 +21,9 @@ class SchoolUsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        UserRole.find_or_create_by(user_id: @user.id, role_id: Role.find_by(name: 'school_admin')&.id)
+        UserRole.find_or_create_by(user_id: @user.id, role_id: Role.find_by(name: 'student')&.id)
 
-        format.html { redirect_to school_user_url(@user), notice: "School Admin User was successfully created." }
+        format.html { redirect_to student_url(@user), notice: "Student was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +35,7 @@ class SchoolUsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to school_user_url(@user), notice: "School Admin User was successfully updated." }
+        format.html { redirect_to student_url(@user), notice: "Student was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +48,7 @@ class SchoolUsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to school_users_url, notice: "School Admin User was successfully destroyed." }
+      format.html { redirect_to students_url, notice: "Student was successfully destroyed." }
       format.json { head :no_content }
     end
   end

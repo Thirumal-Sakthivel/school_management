@@ -1,0 +1,58 @@
+<h4>School Admin User</h4>
+
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Name:</th>
+            <td><%= @user.full_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">School:</th>
+            <td><%= @user.school&.name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Email:</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th scope="row">Phone number:</th>
+            <td><%= @user.phone_number %></td>
+          </tr>
+          <tr>
+            <th scope="row">DOB:</th>
+            <td><%= @user.dob %></td>
+          </tr>
+          <tr>
+            <th scope="row">Gender:</th>
+            <td><%= @user.gender %></td>
+          </tr>
+          <tr>
+            <th scope="row">Street address:</th>
+            <td><%= @user.street_address %></td>
+          </tr>
+          <tr>
+            <th scope="row">City:</th>
+            <td><%= @user.city %></td>
+          </tr>
+          <tr>
+            <th scope="row">State:</th>
+            <td><%= @user.state %></td>
+          </tr>
+          <tr>
+            <th scope="row">Country:</th>
+            <td><%= @user.country %></td>
+          </tr>
+          <tr>
+            <th scope="row">Pin code:</th>
+            <td><%= @user.pin_code %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Back', school_users_path, class: "mt-5 btn btn-secondary" %>
