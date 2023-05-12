@@ -65,3 +65,5 @@ gem 'devise'
 
 # The authorization Gem
 gem 'cancancan'
+
+gem 'active_model_serializers', '~> 0.10.0'
