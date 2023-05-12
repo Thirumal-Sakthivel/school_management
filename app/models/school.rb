@@ -5,4 +5,6 @@ class School < ApplicationRecord
   has_many :users
 
   scope :mine, ->(user_id) {includes(:users).where(users: { id: user_id }) }
+
+  validates :name, :email, presence: true
 end

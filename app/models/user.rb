@@ -14,6 +14,8 @@ class User < ApplicationRecord
   scope :school_admins, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'school_admin' }) }
   scope :school_students, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'student' }) }
 
+  validates :first_name, :last_name, :email, presence: true
+
   def full_name
     [first_name, last_name].select(&:present?).join(' ').titleize
   end
