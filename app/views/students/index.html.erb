@@ -1,7 +1,7 @@
 <div class="row">
-  <h4 class="mb-3">School Admin
-    <% if can? :create, User %>
-      <%= link_to 'New School Admin', new_school_user_path, class: 'btn btn-outline-success fs-6 float-end' %>
+  <h4 class="mb-3">Students
+    <% if can? :create, Course %>
+      <%= link_to 'New Student', new_student_path, class: 'btn btn-outline-success fs-6 float-end' %>
     <% end %>
   </h4>
   <div class="card">
@@ -26,9 +26,13 @@
             <td><%= user.country %></td>
             <td><%= user.active %></td>
             <td>
-              <%= link_to 'Show', student_path(user), class: 'btn btn-sm btn-outline-primary' %>
-              <%= link_to 'Edit', edit_student_path(user), class: 'btn btn-sm btn-outline-warning' %>
-              <%= link_to 'Destroy', student_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+              <% if current_user.student? %>
+                <%= link_to 'Show', student_path(user), class: 'btn btn-sm btn-outline-primary' %>
+              <% else %>
+                <%= link_to 'Show', student_path(user), class: 'btn btn-sm btn-outline-primary' %>
+                <%= link_to 'Edit', edit_student_path(user), class: 'btn btn-sm btn-outline-warning' %>
+                <%= link_to 'Destroy', student_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+              <% end %>
             </td>
           </tr>
         <% end %>
