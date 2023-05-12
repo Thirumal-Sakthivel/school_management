@@ -7,4 +7,5 @@ class School < ApplicationRecord
   scope :mine, ->(user_id) {includes(:users).where(users: { id: user_id }) }
 
   validates :name, :email, presence: true
+  validates :email, uniqueness: true, on: :create
 end

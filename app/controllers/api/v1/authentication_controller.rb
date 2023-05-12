@@ -8,10 +8,10 @@ class Api::V1::AuthenticationController < Api::V1::BaseController
     if @user&.valid_password?(params[:password])
       token = JsonWebToken.encode(user_id: @user.id)
       time = Time.now + 24.hours.to_i
-      render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
-                     username: @user.full_name }, status: :ok
+      render_successs(message: 'success', data: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"),
+        username: @user.full_name })
     else
-      render json: { error: 'unauthorized' }, status: :unauthorized
+      unauthorized('Invalid email and password')
     end
   end
 
