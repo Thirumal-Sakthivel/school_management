@@ -9,8 +9,9 @@ class User < ApplicationRecord
   belongs_to :school, optional: true
 
   scope :admins, -> { includes(:roles).where(roles: { name: 'admin' }) }
+  scope :students, -> { includes(:roles).where(roles: { name: 'student' }) }
   scope :school_admins, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'school_admin' }) }
-  scope :students, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'student' }) }
+  scope :school_students, ->(school_id) { includes(:roles).where(school_id: school_id, roles: { name: 'student' }) }
 
   def full_name
     [first_name, last_name].select(&:present?).join(' ').titleize

@@ -17,7 +17,7 @@
           <% end %>
           <% if can?(:create, User) %>
             <li class="nav-item">
-              <a class="nav-link" href="#">School Admins</a>
+              <a class="nav-link" href="/school_users/admins">School Admins</a>
             </li>
           <% end %>
           <% if can?(:read, Course) %>
@@ -41,7 +41,7 @@
             </a>
             <ul class="dropdown-menu">
               <% if can?(:read, User) %>
-                <li><a class="dropdown-item" href="#">User Profile</a></li>
+                <li><a class="dropdown-item" href="/school_users/profile">User Profile</a></li>
               <% end %>
               <li><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %></li>
             </ul>

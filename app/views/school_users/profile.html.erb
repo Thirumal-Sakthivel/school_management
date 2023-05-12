@@ -1,0 +1,81 @@
+<h4>My Profile #<%= current_user.role_names&.join('')&.titleize %></h4>
+
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Name:</th>
+            <td><%= current_user.full_name %></td>
+          </tr>
+          <tr>
+            <th scope="row">Email:</th>
+            <td><%= current_user.email %></td>
+          </tr>
+          <tr>
+            <th scope="row">Phone number:</th>
+            <td><%= current_user.phone_number %></td>
+          </tr>
+          <tr>
+            <th scope="row">DOB:</th>
+            <td><%= current_user.dob %></td>
+          </tr>
+          <tr>
+            <th scope="row">Street address:</th>
+            <td><%= current_user.street_address %></td>
+          </tr>
+          <tr>
+            <th scope="row">City:</th>
+            <td><%= current_user.city %></td>
+          </tr>
+          <tr>
+            <th scope="row">State:</th>
+            <td><%= current_user.state %></td>
+          </tr>
+          <tr>
+            <th scope="row">Country:</th>
+            <td><%= current_user.country %></td>
+          </tr>
+          <tr>
+            <th scope="row">Pin code:</th>
+            <td><%= current_user.pin_code %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <% if current_user.student? %>
+        <h4>My Approved Courses</h4>
+        <% enrollments = Enrollment.includes(:course, :batch, :school, :student).approved.mine(current_user.id) %>
+
+        <table class="table">
+          <tbody>
+            <% enrollments.each_with_index do |enrollment, index| %>
+              <tr>
+                <th scope="row">Course #<%= index + 1 %>:</th>
+              </tr>
+              <tr>
+                <th scope="row">School:</th>
+                <td><%= enrollment&.school.name %></td>
+              </tr>
+              <tr>
+                <th scope="row">Course:</th>
+                <td><%= enrollment&.course.name %></td>
+              </tr>
+              <tr>
+                <th scope="row">Batch:</th>
+                <td><%= enrollment&.batch.name %></td>
+              </tr>
+              <tr>
+                <th scope="row">Start and End Time:</th>
+                <td><%= format_date_time enrollment&.batch&.start_time %> - <%= format_date_time enrollment&.batch&.end_time %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Back', root_path, class: "mt-5 btn btn-secondary" %>

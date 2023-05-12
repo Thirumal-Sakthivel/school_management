@@ -11,7 +11,14 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :student_id, value: current_user.id %>
+  <% if current_user.student? %>
+    <%= form.hidden_field :student_id, value: current_user.id %>
+  <% else current_user.admin? %>
+    <div class="mb-3">
+      <%= form.label :student_id, class: "form-label" %>
+      <%= form.select :student_id, User.students.all.pluck(:first_name, :id), {} , { class: "form-control" } %>
+    </div>
+  <% end %>
 
   <div class="mb-3">
     <%= form.label :enrollment_date, class: "form-label" %>
